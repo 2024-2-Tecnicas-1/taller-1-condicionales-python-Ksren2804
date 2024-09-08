@@ -1,31 +1,22 @@
-nume_y_let = {}
-
-def evaluar():
-    global nume_y_let
-    # Inicializar el diccionario con letras y números
-
-    # Letras Mayúsculas
-    for i in range(65, 91):  # Del 65 al 90 son las letras mayúsculas en ASCII
-        nume_y_let[chr(i)] = "Es letra mayúscula"
-
-    # Letras Minúsculas
-    for i in range(97, 123):  # Del 97 al 122 son las letras minúsculas en ASCII
-        nume_y_let[chr(i)] = "Es letra minúscula"
-
-    # Números
-    for i in range(48, 58):  # Del 48 al 57 son los números en ASCII
-        nume_y_let[chr(i)] = "Es número"
-
-def determinar_nume_y_let(caracter):
-    if caracter in nume_y_let:
-        return nume_y_let[caracter]  # Retorna el mensaje basado en el diccionario
+def evaluar(caracter):
+    # Verificar si es un número
+    if '0' <= caracter <= '9':
+        return "Es número"
+    
+    # Verificar si es una letra mayúscula
+    elif 'A' <= caracter <= 'Z':
+        return "Es letra mayúscula"
+    
+    # Verificar si es una letra minúscula
+    elif 'a' <= caracter <= 'z':
+        return "Es letra minúscula"
+    # Si no es letra ni número
     else:
-        return f"No es letra ni número"
+        return "No es letra ni número"
 
 if __name__ == '__main__':
-    evaluar()  # Inicializar el diccionario global
     print("Caracter:", end='')
-    caracter = input().strip()
+    caracter = input()
         
-    respuesta = determinar_nume_y_let(caracter)
+    respuesta = evaluar(caracter)
     print(respuesta)
